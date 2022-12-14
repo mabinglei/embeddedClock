@@ -139,12 +139,12 @@ void MainWindow::on_setClockButton_clicked()//设置闹钟按钮点击时调起A
 }
 
 
-void MainWindow::on_syncButton_clicked()//网络校准按钮点击时发送HTTP GET请求，请求地址为http://localhost:8000/time(localhost为本机地址，也可以指定服务器域名)，响应体为格式化后的yyyy-MM-dd
+void MainWindow::on_syncButton_clicked()//网络校准按钮点击时发送HTTP GET请求，请求地址为http://localhost:8000/time，响应体为格式化后的yyyy-MM-dd
 {
     // 创建一个QNetworkAccessManager对象，用于发送网络请求
      QNetworkAccessManager manager;
      // 发送一个GET请求到http://localhost:8000/time
-     QNetworkReply* reply = manager.get(QNetworkRequest(QUrl("http://localhost:8000/time")));
+     QNetworkReply* reply = manager.get(QNetworkRequest(QUrl("http://study.mabinglei.com:8000/time")));
      // 等待响应完成
      QEventLoop loop;
      QObject::connect(reply, SIGNAL(finished()), &loop, SLOT(quit()));
